@@ -1,0 +1,115 @@
+{
+    "headers": [
+        {
+            "name": "Ustanova",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Nivo",
+            "is_primary": false,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "int",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Oznaka programa",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 3
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Naziv programa",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 120
+            },
+            "not_null": true
+        }
+    ],
+    "header_name": [],
+    "headers_count": 4,
+    "object_name": "Studijski program",
+    "dialect": {
+        "skip_first_line": false,
+        "delimiter": ",",
+        "quoting": 0
+    },
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [
+            {
+                "name_of_relation": "Struktura po blokovima",
+                "name_of_child_table": "plan_studijske_grupe.csv",
+                "path_of_child_table": "data/plan_studijske_grupe.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    },
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Program ustanove"
+                    }
+                ]
+            },
+            {
+                "name_of_relation": "Ko studira",
+                "name_of_child_table": "tok_studija.csv",
+                "path_of_child_table": "data/tok_studija.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Ustanova"
+                    },
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    }
+                ]
+            }
+        ],
+        "parent_relation": [
+            {
+                "name_of_relation": "Klasifikacija po nivou",
+                "name_of_child_table": "nivo_studija.csv",
+                "path_of_child_table": "data/nivo_studija.csv",
+                "relation_on": {
+                    "this_table_key": "Nivo",
+                    "child_table_key": "Oznaka"
+                }
+            },
+            {
+                "name_of_relation": "Obrazije za",
+                "name_of_child_table": "visokoskolska_ustanova.csv",
+                "path_of_child_table": "data/visokoskolska_ustanova.csv",
+                "relation_on": {
+                    "this_table_key": "Ustanova",
+                    "child_table_key": "Oznaka"
+                }
+            }
+        ],
+        "bridge_relation": []
+    }
+}

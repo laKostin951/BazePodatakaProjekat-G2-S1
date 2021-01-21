@@ -1,0 +1,117 @@
+{
+    "headers": [
+        {
+            "name": "Program ustanove",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Oznaka programa",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 3
+            },
+            "not_null": true
+        },
+        {
+            "name": "Blok",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Pozicija",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Ustanova predmeta",
+            "is_primary": false,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Oznaka predmeta",
+            "is_primary": false,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 6
+            },
+            "not_null": true
+        }
+    ],
+    "header_name": [],
+    "headers_count": 6,
+    "object_name": "Plan studijske grupe",
+    "dialect": {
+        "skip_first_line": false,
+        "delimiter": ",",
+        "quoting": 0
+    },
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [
+        ],
+        "parent_relation": [
+            {
+                "name_of_relation": "Struktura po blokovima",
+                "name_of_child_table": "studijski_programi.csv",
+                "path_of_child_table": "data/studijski_programi.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Program ustanove",
+                        "child_table_key": "Ustanova"
+                    },
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    }
+                ]
+            },
+            {
+                "name_of_relation": "Na poziciji",
+                "name_of_child_table": "nastavni_predmet.csv",
+                "path_of_child_table": "data/nastavni_predmeti.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova predmeta",
+                        "child_table_key": "Ustanova"
+                    },
+                    {
+                        "this_table_key": "Oznaka predmeta",
+                        "child_table_key": "Oznaka"
+                    }
+                ]
+            }
+        ],
+        "bridge_relation": []
+    }
+}

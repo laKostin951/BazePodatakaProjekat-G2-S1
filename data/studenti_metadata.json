@@ -1,0 +1,191 @@
+{
+    "headers": [
+        {
+            "name": "Ustanova",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Struka",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Broj indexa",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 6
+            },
+            "not_null": true
+        },
+        {
+            "name": "Prezime",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 20
+            },
+            "not_null": true
+        },
+        {
+            "name": "Ime roditelja",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 20
+            },
+            "not_null": false
+        },
+        {
+            "name": "Ime",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 20
+            },
+            "not_null": true
+        },
+        {
+            "name": "Pol",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 1
+            },
+            "not_null": true
+        },
+        {
+            "name": "Adresa stanovanja",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 80
+            },
+            "not_null": false
+        },
+        {
+            "name": "Telefon",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 20
+            },
+            "not_null": false
+        },
+        {
+            "name": "JMBG",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 13,
+                "max_value": 13
+            },
+            "not_null": false
+        },
+        {
+            "name": "Datum rodjenja",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "date",
+                "min_value": 10,
+                "max_value": 10,
+                "date_format": {
+                    "day": [
+                        0,
+                        1
+                    ],
+                    "month": [
+                        3,
+                        4
+                    ],
+                    "year": [
+                        6,
+                        7
+                    ],
+                    "format": "dd/mm/yyyy"
+                },
+                "date_delimiter": "/",
+                "max_possible_date": "",
+                "min_possible_date": ""
+            },
+            "not_null": false
+        }
+    ],
+    "header_name": [],
+    "headers_count": 11,
+    "object_name": "Student",
+    "dialect": {
+        "skip_first_line": false,
+        "delimiter": ",",
+        "quoting": 0
+    },
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [
+            {
+                "name_of_relation": "Studiranje",
+                "name_of_child_table": "Tok_studija.csv",
+                "path_of_child_table": "data/tok_studija.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Student iz ustanove"
+                    },
+                    {
+                        "this_table_key": "Struka",
+                        "child_table_key": "Struka"
+                    },
+                    {
+                        "this_table_key": "Broj indexa",
+                        "child_table_key": "Broj indexa"
+                    }
+                ]
+            }
+        ],
+        "parent_relation": [
+            {
+                "name_of_relation": "Studiraju na",
+                "name_of_child_table": "visokoskolska_ustanova.csv",
+                "path_of_child_table": "data/visokoskolska_ustanova.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Oznaka"
+                    }
+                ]
+            }
+        ],
+        "bridge_relation": []
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "headers": [
+        {
+            "name": "Ustanova",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Oznaka",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 6
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Naziv",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 120
+            },
+            "not_null": true
+        },
+        {
+            "name": "ESPB",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 2
+            },
+            "not_null": true
+        }
+    ],
+    "object_name": "Nastavni predmet",
+    "header_name": [],
+    "headers_count": 4,
+    "dialect": {
+        "skip_first_line": false,
+        "delimiter": ",",
+        "quoting": 0
+    },
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [
+            {
+                "name_of_relation": "Na poziciji",
+                "name_of_child_table": "Plan_studijske_grupe.csv",
+                "path_of_child_table": "data/plan_studijske_grupe.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Ustanova predmeta"
+                    },
+                    {
+                        "this_table_key": "Oznaka",
+                        "child_table_key": "Oznaka predmeta"
+                    }
+                ]
+            }
+        ],
+        "parent_relation": [
+            {
+                "name_of_relation": "Izvodi predmete",
+                "name_of_child_table": "Visokoskolska_ustanova.csv",
+                "path_of_child_table": "data/visokoskolska_ustanova.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Oznaka"
+                    }
+                ]
+            }
+        ],
+        "bridge_relation": []
+    }
+}

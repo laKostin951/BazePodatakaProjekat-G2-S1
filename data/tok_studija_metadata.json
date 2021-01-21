@@ -1,0 +1,233 @@
+{
+    "headers": [
+        {
+            "name": "Ustanova",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Oznaka programa",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 3
+            },
+            "not_null": true
+        },
+        {
+            "name": "Student iz ustanove",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Struka",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Broj indexa",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 6
+            },
+            "not_null": true
+        },
+        {
+            "name": "Skolska godina",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 4,
+                "max_value": 4
+            },
+            "not_null": true
+        },
+        {
+            "name": "Godina studija",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 1
+            },
+            "not_null": true
+        },
+        {
+            "name": "Blok",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Redni broj upisa",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 1,
+                "max_value": 2
+            },
+            "not_null": true
+        },
+        {
+            "name": "Datum upisa",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "date",
+                "min_value": 10,
+                "max_value": 10,
+                "date_format": {
+                    "day": [
+                        0,
+                        1
+                    ],
+                    "month": [
+                        3,
+                        4
+                    ],
+                    "year": [
+                        6,
+                        7
+                    ],
+                    "format": "dd/mm/yyyy"
+                },
+                "date_delimiter": "/",
+                "max_possible_date": "",
+                "min_possible_date": ""
+            },
+            "not_null": true
+        },
+        {
+            "name": "Datum overe",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "date",
+                "min_value": 10,
+                "max_value": 10,
+                "date_format": {
+                    "day": [
+                        0,
+                        1
+                    ],
+                    "month": [
+                        3,
+                        4
+                    ],
+                    "year": [
+                        6,
+                        7
+                    ],
+                    "format": "dd/mm/yyyy"
+                },
+                "date_delimiter": "/",
+                "max_possible_date": "",
+                "min_possible_date": ""
+            },
+            "not_null": false
+        },
+        {
+            "name": "ESPB pocetni",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 3,
+                "max_value": 3
+            },
+            "not_null": true
+        },
+        {
+            "name": "ESPB krajni",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "int",
+                "min_value": 3,
+                "max_value": 3
+            },
+            "not_null": true
+        }
+    ],
+    "header_name": [],
+    "headers_count": 13,
+    "object_name": "Tok studija",
+    "dialect": {
+        "skip_first_line": false,
+        "delimiter": ",",
+        "quoting": 0
+    },
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [],
+        "parent_relation": [
+            {
+                "name_of_relation": "Studiranje",
+                "name_of_child_table": "studenti.csv",
+                "path_of_child_table": "data/studenti.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Student iz ustanove",
+                        "child_table_key": "Ustanova"
+                    },
+                    {
+                        "this_table_key": "Struka",
+                        "child_table_key": "Struka"
+                    },
+                    {
+                        "this_table_key": "Broj indexa",
+                        "child_table_key": "Broj indexa"
+                    }
+                ]
+            },
+            {
+                "name_of_relation": "Ko studira",
+                "name_of_child_table": "studijski_programi.csv",
+                "path_of_child_table": "data/studijski_programi.csv",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Ustanova"
+                    },
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    }
+                ]
+            }
+        ],
+        "bridge_relation": []
+    }
+}

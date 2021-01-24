@@ -24,8 +24,11 @@ class WorkspaceWidget(QtWidgets.QWidget):
 
     def create_main_tab_widget(self):
         self.main_tab_widget = QtWidgets.QTabWidget(self)
+
         self.main_tab_widget.setTabsClosable(True)
         self.main_tab_widget.setMovable(True)
+        self.main_tab_widget.setContentsMargins(0, 0, 0, 0)
+
         self.main_tab_widget.tabCloseRequested.connect(self.delete_tab)
         self.main_tab_widget.currentChanged.connect(self.change_tool_bar)
 

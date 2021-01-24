@@ -10,6 +10,8 @@ from component.extra_window import ExtraWindow
 
 CHILD_RELATION = f"assets{os.path.sep}img{os.path.sep}iconmonstr-generation-2-16.png"
 PARENT_RELATION = f"assets{os.path.sep}img{os.path.sep}iconmonstr-generation-11-16.png"
+UP_RELATION = f"assets{os.path.sep}img{os.path.sep}iconmonstr-triangle-1-16.png"
+DOWN_RELATION = f"assets{os.path.sep}img{os.path.sep}iconmonstr-arrow-80-16.png"
 
 
 class ToolBar(QtWidgets.QToolBar):
@@ -20,7 +22,7 @@ class ToolBar(QtWidgets.QToolBar):
         self.openAction = QAction(QIcon(f"assets{os.path.sep}img{os.path.sep}open.png"), "&Open", self)
         self.printAction = QAction(QIcon(f"assets{os.path.sep}img{os.path.sep}print.png"), "&Print", self)
 
-        self.editor_tool_bar = EditorToolBar(self)
+        # self.editor_tool_bar = EditorToolBar(self)
 
         self.addAction(self.newAction)
         self.addAction(self.openAction)
@@ -28,7 +30,7 @@ class ToolBar(QtWidgets.QToolBar):
 
         self.addSeparator()
 
-        self.addWidget(self.editor_tool_bar)
+        # self.addWidget(self.editor_tool_bar)
 
         self.newAction.setStatusTip('New file')
         self.openAction.setStatusTip('Open file')
@@ -65,11 +67,20 @@ class EditorToolBar(QtWidgets.QGroupBox):
         self.vbox = QHBoxLayout()
         self.vbox.addStretch(1)
         self.vbox.setSpacing(10)
+        self.vbox.setContentsMargins(10, 0, 0, 0)
+        self.setStyleSheet("QGroupBox  { "
+                                         "background-color: black;"
+                           "              padding: 1px,0,0,0;  "
+                           "              margin: 0x;"
+                           "}"
+                           "QPushButton { padding: 4px"
+                           "              margin: 0x;"
+                           "              background-color: transparent;"
+                           " }")
 
         self.setLayout(self.vbox)
 
         self.set_parm(parm)
-        self.setTitle(self.main_title)
         self.set_options()
 
     def add_widget(self, widget):
@@ -79,7 +90,9 @@ class EditorToolBar(QtWidgets.QGroupBox):
         self.setVisible(True)
 
     def set_current_file(self, file_path_c):
-        self.setTitle(f'{self.main_title} {file_path_c.get_file_name()} |')
+        ...
+
+    # self.setTitle(f'{self.main_title} {file_path_c.get_file_name()} |')
 
     def set_options(self):
         layout = self.layout()
@@ -92,6 +105,12 @@ class EditorToolBar(QtWidgets.QGroupBox):
             button.clicked.connect(option["callback"])
 
         layout.insertSpacing(self.layout().count(), 50)
+
+        button = QPushButton(QIcon(UP_RELATION), " ")
+        layout.insertWidget(-1, button)
+
+        button = QPushButton(QIcon(DOWN_RELATION), " ")
+        layout.insertWidget(-1, button)
 
         for index, child_relation in enumerate(self.parm["tools"]["child"]["child_relations"]):
             button = QPushButton(QIcon(CHILD_RELATION), child_relation["name_of_child_table"], self.parent())
@@ -187,4 +206,4 @@ class EditorToolBar(QtWidgets.QGroupBox):
             # remove the item from layout
             layout.removeItem(item)
 
-        self.setTitle(self.main_title)
+        # self.setTitle(self.main_title)

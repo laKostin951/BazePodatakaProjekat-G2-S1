@@ -16,6 +16,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setWindowTitle("Editor generickih podataka")
         self.setWindowIcon(QtGui.QIcon("../assets/img/icons8-edit-file-64.png"))
 
+        self.setStyleSheet("background-color: rgb(0,17,26);"
+                           " color: white ;")
+
         self.status_bar = StatusBar()
         self.setStatusBar(self.status_bar)
 

@@ -2,6 +2,7 @@ import os
 
 from PySide2 import QtWidgets
 from PySide2.QtCore import Qt
+from PySide2.QtGui import QTextFrameFormat
 from PySide2.QtWidgets import QAction
 
 from component.edit_window import EditWindow
@@ -19,6 +20,19 @@ class Table(QtWidgets.QTableWidget, AbstractTableModel):
         self.input_w = Filter(self, self._filter)
         self.tool_bar = None
         self.change_flag = False
+
+        self.setContentsMargins(0, 0, 0, 0)
+        self.verticalHeader().setVisible(False)
+        self.verticalHeader().setVisible(False)
+        self.setStyleSheet("background-color: rgb(0,26,51);"
+                           "border:none;"
+                           "gridline-color: rgb(0,85,102);"
+                           "padding-top: 0px;"
+                           "padding-right: 2px;"
+                           "padding-bottom: 2px;"
+                           "padding-left: 0px;"
+                           "margin: 0x;")
+        self.resizeColumnsToContents()
 
         if set_model:
             self.load()
@@ -93,7 +107,7 @@ class Table(QtWidgets.QTableWidget, AbstractTableModel):
         for row in range(self.rowCount()):
             self.showRow(row)
 
-    def toolbar(self):
+    def toolbar(self,relation):
         return {
             "title": self.model_c.path_c,
             "visible": True,
@@ -144,11 +158,11 @@ class Table(QtWidgets.QTableWidget, AbstractTableModel):
                     }
                 ],
                 "child": {
-                    "child_relations": self.model_c.metadata_c.metadata["sequential_info"]["child_relation"],
+                    "child_relations": self.model_c.metadata_c.metadata["sequential_info"]["child_relation"] if relation else [],
                     "callback": self.open_file
                 },
                 "parent": {
-                    "parent_relations": self.model_c.metadata_c.metadata["sequential_info"]["parent_relation"],
+                    "parent_relations": self.model_c.metadata_c.metadata["sequential_info"]["parent_relation"] if relation else [],
                     "callback": self.open_file
                 },
             }

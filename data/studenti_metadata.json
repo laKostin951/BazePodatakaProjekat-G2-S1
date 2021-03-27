@@ -142,7 +142,6 @@
             "not_null": false
         }
     ],
-    "header_name": [],
     "headers_count": 11,
     "object_name": "Student",
     "dialect": {

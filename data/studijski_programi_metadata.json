@@ -4,7 +4,7 @@
             "name": "Ustanova",
             "is_primary": true,
             "is_foreign_key": true,
-            "data_type": {
+            "data_type":{
                 "type": "str",
                 "min_value": 2,
                 "max_value": 2
@@ -48,7 +48,6 @@
             "not_null": true
         }
     ],
-    "header_name": [],
     "headers_count": 4,
     "object_name": "Studijski program",
     "dialect": {

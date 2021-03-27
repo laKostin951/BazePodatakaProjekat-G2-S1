@@ -1,0 +1,114 @@
+{
+    "headers": [
+        {
+            "name": "Ustanova",
+            "is_primary": true,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "str",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "nivo",
+            "is_primary": false,
+            "is_foreign_key": true,
+            "data_type": {
+                "type": "int",
+                "min_value": 2,
+                "max_value": 2
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Oznaka programa",
+            "is_primary": true,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 3
+            },
+            "predefined_values": null,
+            "not_null": true
+        },
+        {
+            "name": "Naziv programa",
+            "is_primary": false,
+            "is_foreign_key": false,
+            "data_type": {
+                "type": "str",
+                "min_value": 1,
+                "max_value": 120
+            },
+            "predefined_values": null,
+            "not_null": true
+        }
+    ],
+    "headers_count": 4,
+    "object_name": "",
+    "sequential_info": {
+        "is_sequential": true,
+        "child_relation": [
+            {
+                "name_of_relation": "plan_studijske_grupe",
+                "name_of_child_table": "plan_studijske_grupe",
+                "path_of_child_table": "sistem_visokoskolske_ustanove.plan_studijske_grupe",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Program ustanove"
+                    },
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    }
+                ]
+            },
+            {
+                "name_of_relation": "tok_studija",
+                "name_of_child_table": "tok_studija",
+                "path_of_child_table": "sistem_visokoskolske_ustanove.tok_studija",
+                "relation_on": [
+                    {
+                        "this_table_key": "Oznaka programa",
+                        "child_table_key": "Oznaka programa"
+                    },
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Ustanova"
+                    }
+                ]
+            }
+        ],
+        "parent_relation": [
+            {
+                "name_of_relation": "nivo_studija",
+                "name_of_child_table": "nivo_studija",
+                "path_of_child_table": "sistem_visokoskolske_ustanove.nivo_studija",
+                "relation_on": [
+                    {
+                        "this_table_key": "nivo",
+                        "child_table_key": "Oznaka"
+                    }
+                ]
+            },
+            {
+                "name_of_relation": "viskoskolska_ustanova",
+                "name_of_child_table": "viskoskolska_ustanova",
+                "path_of_child_table": "sistem_visokoskolske_ustanove.viskoskolska_ustanova",
+                "relation_on": [
+                    {
+                        "this_table_key": "Ustanova",
+                        "child_table_key": "Oznaka"
+                    }
+                ]
+            }
+        ],
+        "bridge_relation": []
+    }
+}

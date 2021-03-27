@@ -1,0 +1,9 @@
+{
+    "icon": {
+         "icon_source": "icon8",
+         "icon_collection": "Fluent"
+    },
+    "data": {
+        "default_folder": "data"
+    }
+}

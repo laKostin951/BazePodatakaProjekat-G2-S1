@@ -48,7 +48,6 @@
         }
     ],
     "object_name": "Nastavni predmet",
-    "header_name": [],
     "headers_count": 4,
     "dialect": {
         "skip_first_line": false,

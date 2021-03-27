@@ -17,14 +17,13 @@
             "is_primary": false,
             "is_foreign_key": false,
             "data_type": {
-                "A": "str",
+                "type": "str",
                 "min_value": 1,
                 "max_value": 80
             },
             "not_null": true
         }
     ],
-    "header_name": [],
     "headers_count": 2,
     "object_name": "Nivo studija",
     "dialect": {
